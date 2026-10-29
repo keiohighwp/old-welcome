@@ -1,210 +1,147 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KEIO HIGH WATER POLO 2026 | 新入生歓迎</title>
-    <style>
-        /* 全体のスタイル */
-        body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; margin: 0; padding: 0; background-color: #0b1d3a; color: #ffffff; line-height: 1.6; }
-        /* ヘッダー */
-        header { text-align: center; padding: 4rem 1rem 2rem; border-bottom: 3px solid #c8102e; }
-        header h1 { font-size: 2.2rem; margin: 0 0 0.5rem 0; letter-spacing: 2px; }
-        .subtitle { font-size: 1rem; color: #a9b5c9; margin-bottom: 1.5rem; font-weight: bold; }
-        /* 動画エリア */
-        .video-wrapper { max-width: 800px; margin: 0 auto 2rem; border-radius: 8px; overflow: hidden; background: #000; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-        /* セクション共通 */
-        section { padding: 3rem 1.5rem; max-width: 800px; margin: 0 auto; }
-        h2 { font-size: 1.6rem; text-align: center; margin-bottom: 0.5rem; letter-spacing: 1px; }
-        .section-desc { text-align: center; color: #a9b5c9; margin-bottom: 2rem; font-size: 0.95rem; }
-        /* カードレイアウト */
-        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
-        .card { background-color: #1a2c4c; padding: 1.5rem; border-radius: 8px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
-        .card-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .card h3 { margin: 0 0 0.5rem 0; color: #c8102e; font-size: 1.2rem; }
-        .card p { margin: 0; font-size: 0.9rem; }
-        /* ABOUT US 特殊レイアウト */
-        .slogan-box { background: linear-gradient(135deg, #1a2c4c, #0b1d3a); padding: 2rem; border-radius: 8px; margin-bottom: 2rem; border-left: 4px solid #c8102e; text-align: center; }
-        .slogan-box h3 { color: #ffffff; font-size: 1.4rem; margin-bottom: 0.5rem; }
-        .image-placeholder { width: 100%; height: 150px; background-color: #2a3c5c; border-radius: 4px; margin-top: 1rem; display: flex; align-items: center; justify-content: center; color: #a9b5c9; font-size: 0.8rem; }
-        /* ポップな雰囲気セクション */
-        .atmosphere-section { background-color: #f0f4f8; color: #0b1d3a; border-radius: 15px; padding: 3rem 1.5rem; margin-top: 2rem; margin-bottom: 2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .atmosphere-section h2 { color: #0b1d3a; }
-        .atmosphere-desc { text-align: center; color: #555; margin-bottom: 1.5rem; font-size: 0.95rem; font-weight: bold; }
-        .chart-wrapper { max-width: 500px; margin: 0 auto; text-align: center; }
-        .chart-wrapper img { max-width: 100%; height: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
-        /* スケジュール（タイムライン） */
-        .timeline { border-left: 3px solid #2a3c5c; padding-left: 1.5rem; margin-left: 1rem; }
-        .season-block { position: relative; margin-bottom: 2.5rem; }
-        .season-block::before { content: ''; position: absolute; left: -1.9rem; top: 0; width: 15px; height: 15px; border-radius: 50%; background-color: #c8102e; }
-        .season-title { font-size: 1.3rem; font-weight: bold; color: #fff; margin-bottom: 0.5rem; }
-        .season-period { font-size: 0.9rem; color: #c8102e; font-weight: bold; display: inline-block; margin-bottom: 0.5rem; background: rgba(200, 16, 46, 0.2); padding: 0.2rem 0.5rem; border-radius: 4px; }
-        .season-detail { background: #1a2c4c; padding: 1rem; border-radius: 8px; font-size: 0.9rem; }
-        .hype-text { color: #ffd700; font-weight: bold; margin-bottom: 0.5rem; display: block; }
-        .schedule-list { padding-left: 1.2rem; margin: 0.5rem 0 0 0; }
-        .schedule-list li { margin-bottom: 0.3rem; }
-        /* 仮入部フローセクション */
-        .join-section { background-color: #051024; border-radius: 8px; padding: 3rem 1.5rem; }
-        .flow-container { display: flex; flex-direction: column; gap: 1rem; max-width: 600px; margin: 0 auto; }
-        .flow-step { background-color: #1a2c4c; padding: 1rem 1.5rem; border-radius: 50px; display: flex; align-items: center; gap: 15px; }
-        .step-num { background-color: #c8102e; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; flex-shrink: 0; }
-        .step-text { font-size: 0.95rem; font-weight: bold; }
-        .flow-arrow { text-align: center; color: #2a3c5c; font-size: 1.5rem; margin: -0.5rem 0; }
-        .final-action { background-color: #c8102e; color: white; padding: 1.5rem; border-radius: 8px; text-align: center; margin-top: 2rem; font-weight: bold; box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3); }
-        .final-action-title { font-size: 1.2rem; margin-bottom: 0.5rem; display: block; }
-        .final-action-time { font-size: 1.6rem; letter-spacing: 1px; display: block; }
-        .final-action-place { display: block; font-size: 1rem; margin-top: 0.5rem; font-weight: normal; line-height: 1.4; }
-        /* CTA */
-        .cta-section { text-align: center; padding: 4rem 1rem 2rem; }
-        .cta-btn { display: inline-block; background-color: #c8102e; color: white; padding: 1rem 3rem; font-size: 1.2rem; font-weight: bold; text-decoration: none; border-radius: 50px; transition: 0.3s; margin-bottom: 3rem; }
-        .cta-btn:hover { background-color: #a00d25; transform: translateY(-2px); }
-        /* ディープ層向けシークレット導線 */
-        .deep-dive-link { display: inline-block; font-size: 0.8rem; color: #a9b5c9; text-decoration: none; opacity: 0.5; transition: 0.4s; padding: 1rem; letter-spacing: 1px; }
-        .deep-dive-link:hover { opacity: 1; color: #ffd700; text-shadow: 0 0 8px rgba(255, 215, 0, 0.5); }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0A1D42">
+  <title>新入生のみなさんへ｜慶應義塾高等学校 水球部</title>
+  <meta name="description" content="水中の格闘技、水球。部員の大半が高校から始めています。慶應義塾高等学校水球部の練習・1年間・入部までの流れ。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="新入生のみなさんへ｜慶應義塾高等学校 水球部">
+  <meta property="og:description" content="水中の格闘技、水球。部員の大半が高校から始めています。まずはプールに見学へ。">
+  <meta property="og:image" content="https://i.ytimg.com/vi/yg0eR4TH6O0/hqdefault.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/canon.js" defer></script>
+  <script src="assets/app.js" defer></script>
 </head>
-<body>
+<body class="theme-landing">
 
-    <header>
-        <h1>KEIO HIGH WATER POLO 2026</h1>
-        <p class="subtitle">水中の格闘技。恵まれた環境で、新しい挑戦を。</p>
-        
-        <div class="video-wrapper">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/yg0eR4TH6O0" title="KEIO HIGH WATER POLO 新歓映像" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-    </header>
+<!-- 新歓ページ。練習時間・1年間の区切り・ビジョンなどは assets/canon.js から差し込まれます。 -->
 
-    <section>
-        <h2>ABOUT US</h2>
-        <p class="section-desc">慶應義塾水球部の誇りと、受け継がれるDNA。</p>
-        <div class="slogan-box">
-            <h3>「最新のチームが、最良のチームである」</h3>
-            <p style="margin:0; font-size: 0.95rem; color: #a9b5c9;">歴史と伝統を大切にしながら、毎日新しい自分たちにアップデートしていくことを目標にしています。</p>
-        </div>
-        <div class="grid-cards">
-            <div class="card">
-                <div class="card-icon">🏛️</div>
-                <h3>日本水球の先駆け</h3>
-                <p>長い歴史を持つ慶應水球部。先輩たちの思いを受け継ぎながら、常に進化を続けています。</p>
-                <img src="history.jpg" alt="慶應水球部の歴史" style="width: 100%; height: auto; border-radius: 4px; margin-top: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
-            </div>
-            <div class="card">
-                <div class="card-icon">🔺</div>
-                <h3>中高大の連携体制</h3>
-                <p>大学のトップチームを目標に、中学生から大学生までが連携して強くなる仕組みがあります。</p>
-                <img src="pyramid.webp" alt="育成ピラミッド図" style="width: 100%; height: auto; border-radius: 4px; margin-top: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
-            </div>
-        </div>
-    </section>
+<header class="landing-hero">
+  <p class="club" data-c="club.name">慶應義塾高等学校 水球部</p>
+  <h1>水中の格闘技で、<br>新しい挑戦を。</h1>
+  <p class="lead">部員の大半が、高校から水球を始めています。恵まれた環境で、考える力と体力の両方を身につけよう。</p>
+  <div class="video">
+    <iframe src="https://www.youtube-nocookie.com/embed/yg0eR4TH6O0" title="慶應義塾高等学校 水球部 新歓映像" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</header>
+<div class="lane-rope" aria-hidden="true"></div>
 
-    <section>
-        <h2>OUR STRENGTH</h2>
-        <p class="section-desc">体力と考える力の両方が身につく、魅力的なスポーツです。</p>
-        <div class="grid-cards">
-            <div class="card"><div class="card-icon">🌊</div><h3>水中の格闘技</h3><p>圧倒的なスピード感と迫力。他にはないチームプレーの楽しさを味わえます。</p></div>
-            <div class="card"><div class="card-icon">🏟️</div><h3>トップクラスの環境</h3><p>協生館プールでの練習にくわえ、社会人や大学生のコーチが丁寧に指導します。</p></div>
-            <div class="card"><div class="card-icon">🔥</div><h3>ほとんどが未経験</h3><p>大半の部員が高校から水球を始めています。みんなで教え合い、一緒に成長できます。</p></div>
-        </div>
-    </section>
-
-    <section class="atmosphere-section">
-        <h2>ATMOSPHERE</h2>
-        <p class="atmosphere-desc">本気で全国を目指すからこそ、オンとオフのメリハリを大切にしています。</p>
-        <div class="chart-wrapper"><img src="chart.webp" alt="部の雰囲気スパイダーチャート"></div>
-    </section>
-
-    <section>
-        <h2>ACTIVITY</h2>
-        <p class="section-desc">短い練習時間で、集中して上達するスケジュールです。</p>
-        <div class="grid-cards">
-            <div class="card"><div class="card-icon">🏫</div><h3>平日</h3><p>15:20 〜 18:00</p></div>
-            <div class="card"><div class="card-icon">☀️</div><h3>土日祝</h3><p>9:00〜12:00 / 15:00〜18:00</p></div>
-            <div class="card"><div class="card-icon">🏋️</div><h3>筋力トレーニング</h3><p>週1〜2回実施</p></div>
-            <div class="card"><div class="card-icon">🛌</div><h3>お休み</h3><p>週1回（試合予定などに合わせて変動）</p></div>
-        </div>
-    </section>
-
-    <section>
-        <h2>ANNUAL SCHEDULE</h2>
-        <p class="section-desc">全国大会を目指す、1年間のスケジュールです。</p>
-        <div class="timeline">
-            <div class="season-block">
-                <div class="season-title">春・夏シーズン</div>
-                <div class="season-period">3月 〜 8月</div>
-                <div class="season-detail">
-                    <span class="hype-text">🔥 4月〜7月は試合が続く一番熱い季節です！</span>
-                    <ul class="schedule-list">
-                        <li><strong>早慶戦</strong></li>
-                        <li><strong>関東春季大会</strong><br><small style="color: #a9b5c9;">（毎年連続で出場しています）</small></li>
-                        <li><strong>神奈川県大会</strong><br><small style="color: #a9b5c9;">（全国レベルの強豪校と対戦します）</small></li>
-                        <li><strong>関東大会</strong><br><small style="color: #a9b5c9;">（ここで上位に入れば全国大会へ！）</small></li>
-                        <li><strong>全国大会</strong></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="season-block">
-                <div class="season-title">秋シーズン</div>
-                <div class="season-period">8月 〜 11月</div>
-                <div class="season-detail">
-                    新チームがスタートします。基礎体力とチームプレーを鍛え直します。
-                    <ul class="schedule-list"><li><strong>神奈川県大会 新人戦</strong></li></ul>
-                </div>
-            </div>
-            <div class="season-block">
-                <div class="season-title">冬シーズン</div>
-                <div class="season-period">12月 〜 3月</div>
-                <div class="season-detail">
-                    来年に向けた体力作りの期間です。
-                    <ul class="schedule-list" style="margin-bottom: 0.5rem;">
-                        <li><strong>合宿・遠征</strong></li>
-                        <li><strong>他校との練習試合</strong></li>
-                    </ul>
-                    <small style="color: #a9b5c9;">※原則として土日のどちらかがお休みになります。</small>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h2>WANTED</h2>
-        <p class="section-desc">こんな人を待っています！私たちと一緒に成長しましょう。</p>
-        <div class="grid-cards">
-            <div class="card"><div class="card-icon">🏆</div><h3>本気で全国を目指したい人</h3><p>高い目標を持ち、チームと一緒に最後まで頑張れる人。</p></div>
-            <div class="card"><div class="card-icon">🧠</div><h3>自分で考えて動きたい人</h3><p>水球は頭を使うスポーツです。状況を見て、自分で判断する力が身につきます。</p></div>
-            <div class="card"><div class="card-icon">🤝</div><h3>最高の仲間と出会いたい人</h3><p>目標に向かう日々を一緒に乗り越え、一生モノの絆を築ける仲間ができます。</p></div>
-        </div>
-    </section>
-
-    <section class="join-section">
-        <h2>JOIN US</h2>
-        <p class="section-desc">まずは気軽に見学に来て、水球部の雰囲気を体感してください！</p>
-        <div class="flow-container">
-            <div class="flow-step"><div class="step-num">1</div><div class="step-text">プールでの体験会、または教室での説明会に参加する<br><small style="color: #a9b5c9;">※説明会に来られなくても、直接プールに来ていただいて大歓迎です！</small></div></div>
-            <div class="flow-arrow">▼</div>
-            <div class="flow-step"><div class="step-num">2</div><div class="step-text">先輩やコーチに気になることを聞いてみる</div></div>
-            <div class="flow-arrow">▼</div>
-            <div class="flow-step"><div class="step-num">3</div><div class="step-text">仮入部届を出す（手続きは先輩がサポートします）</div></div>
-            <div class="flow-arrow">▼</div>
-            <div class="flow-step"><div class="step-num">4</div><div class="step-text" style="color: #ffd700;">本入部！最高の環境で一緒に水球を楽しもう！</div></div>
-        </div>
-        <div class="final-action">
-            <span class="final-action-title">＼ 迷ったら、まずはここへ！ ／</span>
-            <span class="final-action-time">月火水金 15:00</span>
-            <span class="final-action-place">協生館の正面玄関前（外側）で<br>先輩が看板を持ってお待ちしています！</span>
-        </div>
-    </section>
-
-    <div class="cta-section">
-        <a href="https://instagram.com/KEIOHIGH_WP" class="cta-btn" target="_blank">Instagramを見る</a><br>
-        
-        <a href="award.html" class="deep-dive-link">
-            水球部の歴史や雰囲気をさらに詳しく知る
-        </a>
+<main>
+  <section class="l-section">
+    <h2>私たちについて</h2>
+    <p class="l-desc">慶應水球の誇りと、受け継がれてきたもの。</p>
+    <div class="slogan">
+      <p>「<span data-c="vision.main"></span>」</p>
+      <p>歴史と伝統を大切にしながら、毎日新しい自分たちに更新していくことを目指しています。</p>
     </div>
+    <div class="l-grid">
+      <div class="l-card">
+        <i class="fa-solid fa-landmark" aria-hidden="true"></i>
+        <h3><span data-c="club.founded"></span>年創部、日本水球の先駆け</h3>
+        <p>100年以上の歴史を持つ慶應水球。先輩たちの思いを受け継ぎながら、進化を続けています。</p>
+        <img src="history.jpg" alt="慶應水球部の歴史を伝える写真" loading="lazy">
+      </div>
+      <div class="l-card">
+        <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+        <h3>中学から大学まで連携</h3>
+        <p>大学のトップチームを目標に、中学生から大学生までが連携して強くなる仕組みがあります。</p>
+        <img src="pyramid.webp" alt="中学・高校・大学の育成ピラミッド図" loading="lazy">
+      </div>
+    </div>
+  </section>
 
+  <section class="l-section">
+    <h2>水球部の魅力</h2>
+    <p class="l-desc">体力と考える力の両方が身につくスポーツです。</p>
+    <div class="l-grid">
+      <div class="l-card"><i class="fa-solid fa-water" aria-hidden="true"></i><h3>水中の格闘技</h3><p>圧倒的なスピード感と迫力。他にはないチームプレーの楽しさがあります。</p></div>
+      <div class="l-card"><i class="fa-solid fa-person-swimming" aria-hidden="true"></i><h3>トップクラスの環境</h3><p>協生館プールで練習し、社会人や大学生のコーチが丁寧に指導します。</p></div>
+      <div class="l-card"><i class="fa-solid fa-seedling" aria-hidden="true"></i><h3>ほとんどが未経験</h3><p>大半の部員が高校から水球を始めています。教え合いながら、一緒に成長できます。</p></div>
+      <div class="l-card"><i class="fa-solid fa-comments" aria-hidden="true"></i><h3>部員が指導者を評価する</h3><p data-c="eval360.welcome"></p></div>
+    </div>
+  </section>
+
+  <section class="l-section light-band">
+    <h2>部の雰囲気</h2>
+    <p class="l-desc">本気で全国を目指すからこそ、オンとオフのメリハリを大切にしています。</p>
+    <img src="chart.webp" alt="部の雰囲気をあらわすレーダーチャート" loading="lazy">
+  </section>
+
+  <section class="l-section">
+    <h2>練習</h2>
+    <p class="l-desc">短い練習時間で、集中して上達するスケジュールです。</p>
+    <div data-render="practice" data-v="welcome"></div>
+  </section>
+
+  <section class="l-section">
+    <h2>1年間の流れ</h2>
+    <p class="l-desc">全国大会を目指す1年間です。</p>
+    <ol class="seasons">
+      <li>
+        <div class="season-head"><strong><span data-c="seasons.0.alias"></span>シーズン</strong><span data-c="seasons.0.months"></span></div>
+        <p>4月から夏にかけて試合が続く、一番熱い季節です。</p>
+        <div class="season-events">
+          <ul>
+            <li>早慶戦</li>
+            <li>関東春季大会 <small>毎年連続で出場しています</small></li>
+            <li>神奈川県大会 <small>全国レベルの強豪校と対戦します</small></li>
+            <li>関東大会 <small>ここで上位に入れば全国大会へ</small></li>
+            <li>全国大会（インターハイ）</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="season-head"><strong><span data-c="seasons.1.alias"></span>シーズン</strong><span data-c="seasons.1.months"></span></div>
+        <p>新チームがスタート。基礎体力とチームプレーを鍛え直します。</p>
+        <div class="season-events"><ul><li>神奈川県 新人戦</li></ul></div>
+      </li>
+      <li>
+        <div class="season-head"><strong><span data-c="seasons.2.alias"></span>シーズン</strong><span data-c="seasons.2.months"></span></div>
+        <p>来年に向けた体力づくりの期間です。原則として、土日のどちらかがお休みになります。</p>
+        <div class="season-events"><ul><li>合宿・遠征</li><li>他校との練習試合</li></ul></div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="l-section">
+    <h2>こんな人を待っています</h2>
+    <p class="l-desc">私たちと一緒に成長しましょう。</p>
+    <div class="l-grid">
+      <div class="l-card"><i class="fa-solid fa-trophy" aria-hidden="true"></i><h3>本気で全国を目指したい人</h3><p>高い目標を持ち、チームと一緒に最後まで頑張れる人。</p></div>
+      <div class="l-card"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i><h3>自分で考えて動きたい人</h3><p>水球は頭を使うスポーツです。状況を見て自分で判断する力が身につきます。</p></div>
+      <div class="l-card"><i class="fa-solid fa-handshake" aria-hidden="true"></i><h3>最高の仲間と出会いたい人</h3><p>目標に向かう日々を一緒に乗り越え、一生ものの仲間ができます。</p></div>
+    </div>
+  </section>
+
+  <section class="l-section">
+    <h2>入部までの流れ</h2>
+    <p class="l-desc">まずは気軽に見学に来て、雰囲気を体感してください。</p>
+    <ol class="join-steps">
+      <li><div>プールでの体験会、または教室での説明会に参加する<small>説明会に来られなくても、直接プールに来てくれれば大歓迎です。</small></div></li>
+      <li><div>先輩やコーチに、気になることを聞いてみる</div></li>
+      <li><div>仮入部届を出す<small>手続きは先輩がサポートします。</small></div></li>
+      <li><div>本入部。最高の環境で、一緒に水球を楽しもう。</div></li>
+    </ol>
+    <div class="meet">
+      <p>迷ったら、まずはここへ</p>
+      <p class="meet-time">月・火・水・金 15:00</p>
+      <p>協生館の正面玄関前（外側）で、先輩が看板を持って待っています。</p>
+    </div>
+  </section>
+
+  <div class="cta">
+    <a class="btn-primary" href="https://instagram.com/KEIOHIGH_WP" target="_blank" rel="noopener"><i class="fa-brands fa-instagram" aria-hidden="true"></i>Instagramを見る</a><br>
+    <a class="more" href="award.html">水球部の歴史と表彰をもっと知る</a>
+  </div>
+</main>
+
+<footer class="landing-foot"><p data-c="club.name">慶應義塾高等学校 水球部</p></footer>
 </body>
 </html>
